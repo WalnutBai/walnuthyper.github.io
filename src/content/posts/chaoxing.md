@@ -3,7 +3,7 @@ title: 学习通APK修改全教程
 published: 2025-12-31
 tags: [安卓逆向, 教程]
 category: AndroidReverse
-draft: true
+draft: false
 ---
 
 # 学习通APK修改全教程
