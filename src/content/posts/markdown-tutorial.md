@@ -1,986 +1,279 @@
 ---
-title: Markdown Tutorial
-published: 2025-01-20
-pinned: true
-description: A simple example of a Markdown blog post.
-tags: [Markdown, Blogging]
-category: Examples
-licenseName: "Unlicensed"
-author: emn178
-sourceLink: "https://github.com/emn178/markdown"
-draft: false
+title: 学习通APK修改全教程
+published: 2025-12-31
+tags: [安卓逆向, 教程]
+category: AndroidReverse
+draft: true
 ---
 
-# Markdown Tutorial
-
-A markdown example shows how to write a markdown file. This document integrates core syntax and extensions (GMF).
-
-- [Block Elements](#block-elements)
-  - [Paragraphs and Line Breaks](#paragraphs-and-line-breaks)
-  - [Headers](#headers)
-  - [Blockquotes](#blockquotes)
-  - [Lists](#lists)
-  - [Code Blocks](#code-blocks)
-  - [Horizontal Rules](#horizontal-rules)
-  - [Table](#table)
-- [Span Elements](#span-elements)
-  - [Links](#links)
-  - [Emphasis](#emphasis)
-  - [Code](#code)
-  - [Images](#images)
-  - [Strikethrough](#strikethrough)
-- [Miscellaneous](#miscellaneous)
-  - [Automatic Links](#automatic-links)
-  - [Backslash Escapes](#backslash-escapes)
-- [Inline HTML](#inline-html)
-
-## Block Elements
-
-### Paragraphs and Line Breaks
-
-#### Paragraphs
-
-HTML Tag: `<p>`
-
-One or more blank lines. (A blank line is a line containing nothing but **spaces** or **tabs** is considered blank.)
-
-Code:
-
-    This will be
-    inline.
-
-    This is second paragraph.
-
-Preview:
-
----
-
-This will be
-inline.
-
-This is second paragraph.
-
----
-
-#### Line Breaks
-
-HTML Tag: `<br />`
-
-End a line with **two or more spaces**.
-
-Code:
-
-    This will be not
-    inline.
-
-Preview:
-
----
-
-This will be not  
-inline.
-
----
-
-### Headers
-
-Markdown supports two styles of headers, Setext and atx.
-
-#### Setext
-
-HTML Tags: `<h1>`, `<h2>`
-
-"Underlined" using **equal signs (=)** as `<h1>` and **dashes (-)** as `<h2>` in any number.
-
-Code:
-
-    This is an H1
-    =============
-    This is an H2
-    -------------
-
-Preview:
-
----
-
-# This is an H1
-
-## This is an H2
-
----
-
-#### atx
-
-HTML Tags: `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`
-
-Uses 1-6 **hash characters (#)** at the start of the line, corresponding to `<h1>` - `<h6>`.
-
-Code:
-
-    # This is an H1
-    ## This is an H2
-    ###### This is an H6
-
-Preview:
-
----
-
-# This is an H1
-
-## This is an H2
-
-###### This is an H6
-
----
-
-Optionally, you may "close" atx-style headers. The closing hashes **don't need to match** the number of hashes used to open the header.
-
-Code:
-
-    # This is an H1 #
-    ## This is an H2 ##
-    ### This is an H3 ######
-
-Preview:
-
----
-
-# This is an H1
-
-## This is an H2
-
-### This is an H3
-
----
-
-### Blockquotes
-
-HTML Tag: `<blockquote>`
-
-Markdown uses email-style **>** characters for blockquoting. It looks best if you hard wrap the text and put a > before every line.
-
-Code:
-
-    > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-    > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-    > Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-    >
-    > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-    > id sem consectetuer libero luctus adipiscing.
-
-Preview:
-
----
-
-> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
->
-> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-> id sem consectetuer libero luctus adipiscing.
-
----
-
-Markdown allows you to be lazy and only put the > before the first line of a hard-wrapped paragraph.
-
-Code:
-
-    > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-    consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-    Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-    > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-    id sem consectetuer libero luctus adipiscing.
-
-Preview:
-
----
-
-> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-> id sem consectetuer libero luctus adipiscing.
-
----
-
-Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by adding additional levels of >.
-
-Code:
-
-    > This is the first level of quoting.
-    >
-    > > This is nested blockquote.
-    >
-    > Back to the first level.
-
-Preview:
-
----
-
-> This is the first level of quoting.
->
-> > This is nested blockquote.
->
-> Back to the first level.
-
----
-
-Blockquotes can contain other Markdown elements, including headers, lists, and code blocks.
-
-Code:
-
-    > ## This is a header.
-    >
-    > 1.   This is the first list item.
-    > 2.   This is the second list item.
-    >
-    > Here's some example code:
-    >
-    >     return shell_exec("echo $input | $markdown_script");
-
-Preview:
-
----
-
-> ## This is a header.
->
-> 1.  This is the first list item.
-> 2.  This is the second list item.
->
-> Here's some example code:
->
->     return shell_exec("echo $input | $markdown_script");
-
----
-
-### Lists
-
-Markdown supports ordered (numbered) and unordered (bulleted) lists.
-
-#### Unordered
-
-HTML Tag: `<ul>`
-
-Unordered lists use **asterisks (\*)**, **pluses (+)**, and **hyphens (-)**.
-
-Code:
-
-    *   Red
-    *   Green
-    *   Blue
-
-Preview:
-
----
-
-- Red
-- Green
-- Blue
-
----
-
-is equivalent to:
-
-Code:
-
-    +   Red
-    +   Green
-    +   Blue
-
-and:
-
-Code:
-
-    -   Red
-    -   Green
-    -   Blue
-
-#### Ordered
-
-HTML Tag: `<ol>`
-
-Ordered lists use numbers followed by periods:
-
-Code:
-
-    1.  Bird
-    2.  McHale
-    3.  Parish
-
-Preview:
-
----
-
-1.  Bird
-2.  McHale
-3.  Parish
-
----
-
-It's possible to trigger an ordered list by accident, by writing something like this:
-
-Code:
-
-    1986. What a great season.
-
-Preview:
-
----
-
-1986. What a great season.
-
----
-
-You can **backslash-escape (\\)** the period:
-
-Code:
-
-    1986\. What a great season.
-
-Preview:
-
----
-
-1986\. What a great season.
-
----
-
-#### Indented
-
-##### Blockquote
-
-To put a blockquote within a list item, the blockquote's > delimiters need to be indented:
-
-Code:
-
-    *   A list item with a blockquote:
-
-        > This is a blockquote
-        > inside a list item.
-
-Preview:
-
----
-
-- A list item with a blockquote:
-
-  > This is a blockquote
-  > inside a list item.
-
----
-
-##### Code Block
-
-To put a code block within a list item, the code block needs to be indented twice — **8 spaces** or **two tabs**:
-
-Code:
-
-    *   A list item with a code block:
-
-            <code goes here>
-
-Preview:
-
----
-
-- A list item with a code block:
-
-      <code goes here>
-
----
-
-##### Nested List
-
-Code:
-
-    * A
-      * A1
-      * A2
-    * B
-    * C
-
-Preview:
-
----
-
-- A
-  - A1
-  - A2
-- B
-- C
-
----
-
-### Code Blocks
-
-HTML Tag: `<pre>`
-
-Indent every line of the block by at least **4 spaces** or **1 tab**.
-
-Code:
-
-    This is a normal paragraph:
-
-        This is a code block.
-
-Preview:
-
----
-
-This is a normal paragraph:
-
-    This is a code block.
-
----
-
-A code block continues until it reaches a line that is not indented (or the end of the article).
-
-Within a code block, **_ampersands (&)_** and angle **brackets (< and >)** are automatically converted into HTML entities.
-
-Code:
-
-        <div class="footer">
-            &copy; 2004 Foo Corporation
-        </div>
-
-Preview:
-
----
-
-    <div class="footer">
-        &copy; 2004 Foo Corporation
-    </div>
-
----
-
-Following sections Fenced Code Blocks and Syntax Highlighting are extensions, you can use the other way to write the code block.
-
-#### Fenced Code Blocks
-
-Just wrap your code in ` ``` ` (as shown below) and you won't need to indent it by four spaces.
-
-Code:
-
-    Here's an example:
-
-    ```
-    function test() {
-      console.log("notice the blank line before this function?");
-    }
-    ```
-
-Preview:
-
----
-
-Here's an example:
-
+# 学习通APK修改全教程
+
+本教程涵盖学习通APK脱壳、功能修改、反检测、考试增强等全流程操作，适配6.x系列版本。
+
+## 1，脱壳
+脱壳网站56.al，获得dex
+AndroidManifest.xml：
+```xml
+application下name：“com.secneo.apkwrapper.AW”改“com.chaoxing.mobile.AppApplication”，
+android:appComponentFactory="com.secneo.apkwrapper.AP"改为“androidx.core.app.CoreComponentFactory”并删除最后provider，添加“android:debuggable="true"”后面调试用。
 ```
-function test() {
-  console.log("notice the blank line before this function?");
+原dex有库需导入，classes重命名+1塞回包。（否则云盘闪退）
+删除特征文件：
+```
+assets/meta-data/manifest.mf
+assets/meta-data/rsa.pub
+assets/meta-data/rsa.sig
+lib/arm64-v8a/libDexHelper-x86.so
+lib/arm64-v8a/libDexHelper.so
+```
+操作不要签名，最后普通一键去除签名校验。
+注：必须去签，位置签到时百度地图sdk会校验应用签名，校验失败无法位置签到！普通去签即可，无需原包过签。
+
+## 2，视频快进+倍速
+com.chaoxing.mobile.player.course.CourseVideoPlayer：
+清空：setCanTraceAfter、setCanSpeed方法
+最新版无效，待更新。
+
+## 3，自定义倍速
+arsc++编辑下列内容：
+```xml
+<string-array name="video_speed_float">
+    <item>0.5</item>
+    <item>1.0</item>
+    <item>1.5</item>
+    <item>2.0</item>
+    <item>2.5</item>
+    <item>3.0</item>
+</string-array>
+<string-array name="video_speed_string">
+    <item>0.5x</item>
+    <item>1.0x</item>
+    <item>1.5x</item>
+    <item>2.0x</item>
+    <item>2.5x</item>
+    <item>3.0x</item>
+</string-array>
+<string-array name="video_speeds_chose">
+    <item>0.5x</item>
+    <item>1.0x</item>
+    <item>1.5x</item>
+    <item>2.0x</item>
+    <item>2.5x</item>
+    <item>3.0x</item>
+</string-array>
+```
+    
+## 4，去考试小窗检测
+“com.chaoxing.mobile.webapp.table.ProtocolTable_Impl”删除有关“CLIENT_SNAPSHOT”代码
+但其实清空字符串“版本过低,无法截屏”所在方法即可，上述是调用处。
+
+## 5，去下线弹窗
+清空字符串“你的学习通账号于%s在%s设备上登录。若非本人操作，则密码可能已经泄露，请尽快登录学习通修改密码。”所在方法。
+
+## 6，去更新
+清空“检查版本升级失败”所在方法
+6.1.5暂未找到，不过有不再提醒，懒得改。
+
+## 7，修改默认为我学的课
+通用法：类名“CourseListViewModel”，找“return this.a”方法调用处，找类似下面方法代码修改。
+6.4.8法：找字符串“我学的课”id，查找调用处，找到下列代码：（搜“course_study_list”）
+```java
+private void ja() {
+    if (this.C == null) {
+        this.T = LayoutInflater.from(getContext()).inflate(R.layout.toolbar_title_radio_group_item, (ViewGroup) null, false);
+        this.e.getTitleLayoutParent().addView(this.T);
+        this.U = (RadioGroup) this.T.findViewById(R.id.rgTabs);
+        this.V = (RadioButton) this.T.findViewById(R.id.rb_01);
+        this.W = (RadioButton) this.T.findViewById(R.id.rb_02);
+        this.V.setText(getString(R.string.course_teach_list));
+        this.W.setText(getString(R.string.course_study_list));
+        this.U.setOnCheckedChangeListener(this.U0);
+        if (this.X.f() == 1) {//别if了，goto
+            this.U.check(R.id.rb_01);//我教的课
+            return;
+        } else {
+            this.U.check(R.id.rb_02);//我学的课
+            return;
+        }
+    }
+    this.e.getTitleView().setText(((FolderInfo) this.C.getContents()).getFolderName());
 }
 ```
 
----
+## 8，去开屏广告
+“com.chaoxing.mobile.activity.SplashActivity”转java，搜全词匹配“ad”
+得：Ad a = this.f.a(this);，跳转a方法清空代码，即return null。
 
-#### Syntax Highlighting
+## 9，手动去除签名校验、去把其他设备挤下线，去虚拟机检测
+清空方法，类名“com.chaoxing.libencrypt.Encrypt”，方法“native_init”，注意删除“native”修饰符。
 
-In your fenced block, add an optional language identifier and we'll run it through syntax highlighting ([Support Languages](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)).
+```smali
+.method public static native native_init(Landroid/content/Context;)V
+.end method
+```
+改为
+```smali
+.method public static native_init(Landroid/content/Context;)V
+    .registers 1
 
-Code:
-
-    ```ruby
-    require 'redcarpet'
-    markdown = Redcarpet.new("Hello World!")
-    puts markdown.to_html
-    ```
-
-Preview:
-
----
-
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
+    return-void
+.end method
 ```
 
----
+## 10，始终显示“转发”，为浏览器考试做铺垫
+算法助手打开“监听onclick”，找到回调类，查找构造方法调用处，类“WebAppViewerFragment”，定位“null”，删除下面if
 
-### Horizontal Rules
+## 11，去除root提示
+清空“你的手机已经获得ROOT权限，存在安全风险！”所在方法
 
-HTML Tag: `<hr />`
-Places **three or more hyphens (-), asterisks (\*), or underscores (\_)** on a line by themselves. You may use spaces between the hyphens or asterisks.
+## 12，内置浏览器标题添加打开浏览器事件
+确保已修改10，算法助手抓点击事件，onclick跳转，分析
+搜索“geturl”，仿照写smali，类“WebAppViewerFragment”，搜索“GroupReportActivity”定位“举报”事件，调用openURL，最后修改“举报”文本（arsc++搜“topic_Report”）
+事例：（注意寄存器个数）
+```smali
+.method private e(Ljava/lang/String;Ljava/lang/String;)V
+    .registers 7
+    #仿写调用geturl
+    iget-object v0, p0, Lcom/chaoxing/mobile/webapp/ui/WebAppViewerFragment;->r:Lcom/chaoxing/mobile/webapp/WebViewerParams;
 
-Code:
+    invoke-virtual {v0}, Lcom/chaoxing/mobile/webapp/WebViewerParams;->getUrl()Ljava/lang/String;
 
-    * * *
-    ***
-    *****
-    - - -
-    ---------------------------------------
-    ___
-
-Preview:
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
-### Table
-
-HTML Tag: `<table>`
-
-It's an extension.
-
-Separates column by **pipe (|)** and header by **dashes (-)**, and uses **colon (:)** for alignment.
-
-The outer **pipes (|)** and alignment are optional. There are **3 delimiters** each cell at least for separating header.
-
-Code:
-
-```
-| Left | Center | Right |
-|:-----|:------:|------:|
-|aaa   |bbb     |ccc    |
-|ddd   |eee     |fff    |
-
- A | B
----|---
-123|456
-
-
-A |B
---|--
-12|45
+    move-result-object v0
+    #调用openURL
+    invoke-direct {p0, v0}, Lcom/chaoxing/mobile/webapp/ui/WebAppViewerFragment;->openURL(Ljava/lang/String;)V
+    return-void
+.end method
 ```
 
-Preview:
-
----
-
-| Left | Center | Right |
-| :--- | :----: | ----: |
-| aaa  |  bbb   |   ccc |
-| ddd  |  eee   |   fff |
-
-| A   | B   |
-| --- | --- |
-| 123 | 456 |
-
-| A   | B   |
-| --- | --- |
-| 12  | 45  |
-
----
-
-## Span Elements
-
-### Links
-
-HTML Tag: `<a>`
-
-Markdown supports two style of links: inline and reference.
-
-#### Inline
-
-Inline link format like this: `[Link Text](URL "Title")`
-
-Title is optional.
-
-Code:
-
-    This is [an example](http://example.com/ "Title") inline link.
-
-    [This link](http://example.net/) has no title attribute.
-
-Preview:
-
----
-
-This is [an example](http://example.com/ "Title") inline link.
-
-[This link](http://example.net/) has no title attribute.
-
----
-
-If you're referring to a local resource on the same server, you can use relative paths:
-
-Code:
-
-    See my [About](/about/) page for details.
-
-Preview:
-
----
-
-See my [About](/about/) page for details.
-
----
-
-#### Reference
-
-You could predefine link references. Format like this: `[id]: URL "Title"`
-
-Title is also optional. And the you refer the link, format like this: `[Link Text][id]`
-
-Code:
-
-    [id]: http://example.com/  "Optional Title Here"
-    This is [an example][id] reference-style link.
-
-Preview:
-
----
-
-[id]: http://example.com/ "Optional Title Here"
-
-This is [an example][id] reference-style link.
-
----
-
-That is:
-
-- Square brackets containing the link identifier (**not case sensitive**, optionally indented from the left margin using up to three spaces);
-- followed by a colon;
-- followed by one or more spaces (or tabs);
-- followed by the URL for the link;
-- The link URL may, optionally, be surrounded by angle brackets.
-- optionally followed by a title attribute for the link, enclosed in double or single quotes, or enclosed in parentheses.
-
-The following three link definitions are equivalent:
-
-Code:
-
-    [foo]: http://example.com/  "Optional Title Here"
-    [foo]: http://example.com/  'Optional Title Here'
-    [foo]: http://example.com/  (Optional Title Here)
-    [foo]: <http://example.com/>  "Optional Title Here"
-
-Uses an empty set of square brackets, the link text itself is used as the name.
-
-Code:
-
-    [Google]: http://google.com/
-    [Google][]
-
-Preview:
-
----
-
-[Google]: http://google.com/
-
-[Google][]
-
----
-
-### Emphasis
-
-HTML Tags: `<em>`, `<strong>`
-
-Markdown treats **asterisks (\*)** and **underscores (\_)** as indicators of emphasis. **One delimiter** will be `<em>`; \*_double delimiters_ will be `<strong>`.
-
-Code:
-
-    *single asterisks*
-
-    _single underscores_
-
-    **double asterisks**
-
-    __double underscores__
-
-Preview:
-
----
-
-_single asterisks_
-
-_single underscores_
-
-**double asterisks**
-
-**double underscores**
-
----
-
-But if you surround an \* or \_ with spaces, it'll be treated as a literal asterisk or underscore.
-
-You can backslash escape it:
-
-Code:
-
-    \*this text is surrounded by literal asterisks\*
-
-Preview:
-
----
-
-\*this text is surrounded by literal asterisks\*
-
----
-
-### Code
-
-HTML Tag: `<code>`
-
-Wraps it with **backtick quotes (`)**.
-
-Code:
-
-    Use the `printf()` function.
-
-Preview:
-
----
-
-Use the `printf()` function.
-
----
-
-To include a literal backtick character within a code span, you can use **multiple backticks** as the opening and closing delimiters:
-
-Code:
-
-    ``There is a literal backtick (`) here.``
-
-Preview:
-
----
-
-``There is a literal backtick (`) here.``
-
----
-
-The backtick delimiters surrounding a code span may include spaces — one after the opening, one before the closing. This allows you to place literal backtick characters at the beginning or end of a code span:
-
-Code:
-
-    A single backtick in a code span: `` ` ``
-
-    A backtick-delimited string in a code span: `` `foo` ``
-
-Preview:
-
----
-
-A single backtick in a code span: `` ` ``
-
-A backtick-delimited string in a code span: `` `foo` ``
-
----
-
-### Images
-
-HTML Tag: `<img />`
-
-Markdown uses an image syntax that is intended to resemble the syntax for links, allowing for two styles: inline and reference.
-
-#### Inline
-
-Inline image syntax looks like this: `![Alt text](URL "Title")`
-
-Title is optional.
-
-Code:
-
-    ![Alt text](/path/to/img.jpg)
-
-    ![Alt text](/path/to/img.jpg "Optional title")
-
-Preview:
-
----
-
-![Alt text](https://s2.loli.net/2024/08/20/5fszgXeOxmL3Wdv.webp)
-
-![Alt text](https://s2.loli.net/2024/08/20/5fszgXeOxmL3Wdv.webp "Optional title")
-
----
-
-That is:
-
-- An exclamation mark: !;
-- followed by a set of square brackets, containing the alt attribute text for the image;
-- followed by a set of parentheses, containing the URL or path to the image, and an optional title attribute enclosed in double or single quotes.
-
-#### Reference
-
-Reference-style image syntax looks like this: `![Alt text][id]`
-
-Code:
-
-    [img id]: https://s2.loli.net/2024/08/20/5fszgXeOxmL3Wdv.webp  "Optional title attribute"
-    ![Alt text][img id]
-
-Preview:
-
----
-
-[img id]: https://s2.loli.net/2024/08/20/5fszgXeOxmL3Wdv.webp "Optional title attribute"
-
-![Alt text][img id]
-
----
-
-### Strikethrough
-
-HTML Tag: `<del>`
-
-It's an extension.
-
-GFM adds syntax to strikethrough text.
-
-Code:
-
-```
-~~Mistaken text.~~
+openURL的smali：
+```smali
+.method private openURL(Ljava/lang/String;)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            ")V"
+        }
+    .end annotation
+
+    .prologue
+    .line 231
+    new-instance v0, Landroid/content/Intent;
+
+    const-string v1, "android.intent.action.VIEW"
+
+    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 232
+    invoke-static {p1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->setData(Landroid/net/Uri;)Landroid/content/Intent;
+
+    .line 233
+    invoke-virtual {p0, v0}, 粘贴当前类名->startActivity(Landroid/content/Intent;)V
+#补全上述代码
+    return-void
+.end method
 ```
 
-Preview:
-
----
-
-~~Mistaken text.~~
-
----
-
-## Miscellaneous
-
-### Automatic Links
-
-Markdown supports a shortcut style for creating "automatic" links for URLs and email addresses: simply surround the URL or email address with angle brackets.
-
-Code:
-
-    <http://example.com/>
-
-    <address@example.com>
-
-Preview:
-
----
-
-<http://example.com/>
-
-<address@example.com>
-
----
-
-GFM will autolink standard URLs.
-
-Code:
-
+## 13，学习通网页可调试：
+“AndroidManifest.xml”在“<application”添加
+```xml
+android:debuggable="true"
 ```
-https://github.com/emn178/markdown
+类“WebAppViewerFragment”找到执行js的那个函数，第一行添加：
+```smali
+const/4 v0, 0x1
+
+invoke-static {v0}, Landroid/webkit/WebView;->setWebContentsDebuggingEnabled(Z)V
 ```
 
-Preview:
+## 14，学习通考试、测验增强：
+dex++，找到类似以下的字符串，替换：
+```javascript
+(function(){ var name; try{ name = document.getElementById('activity-name').innerText.replace(/(^\s+)|(\s+$)/, '');}catch(e){} if(name) { androidjsbridge.getTitle(name); } try{if(!document.querySelector('.copyStyle')){const a=document.createElement('style');a.textContent='*{user-select:text!important;-webkit-user-select:text!important;-webkit-touch-callout:default!important;-khtml-user-select:text!important;-moz-user-select:text!important;-ms-user-select:text!important;}';a.className='copyStyle';document.head.appendChild(a);}editors.forEach(a=>{a&&a.ueditor&&(a.ueditor.__allListeners.beforepaste=null)});document.querySelectorAll('.mask_div').forEach(a=>a.remove());closeMonitor()}catch(e){console.log(e)}})()
+```
 
----
+上述代码的功能：在原js基础上添加，允许复制（css），填空题允许粘贴（移除监听器），删除水印，关闭切屏监控。
+教程见：https://bbs.binmt.cc/thread-150946-1-1.html
 
-https://github.com/emn178/markdown
+## 15，学习通多签（未尝试，理论可行）
+搜“CLIENT_DEVICE_FLAG”，找是“name=”的类，字符串定位“^(0{16,64})$”，滑动最下面，找类似下面，方法以上全删。
+  :cond_27
+  :goto_27
 
----
+添加生成随机id字符串函数：
+```smali
+.method public static randomS()Ljava/lang/String;
+    .registers 5
 
-### Backslash Escapes
+    .prologue
+    .line 26
+    new-instance v1, Ljava/lang/StringBuilder;
 
-Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown's formatting syntax.
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-Code:
+    .line 27
+    const-string v2, "0123456789abcdefghijklmnopqrstuvwxyz"
 
-    \*literal asterisks\*
+    .line 28
+    new-instance v3, Ljava/util/Random;
 
-Preview:
+    invoke-direct {v3}, Ljava/util/Random;-><init>()V
 
----
+    .line 29
+    const/4 v0, 0x0
 
-\*literal asterisks\*
+    :goto_d
+    const/16 v4, 0x10
 
----
+    if-ge v0, v4, :cond_23
 
-Markdown provides backslash escapes for the following characters:
+    .line 30
+    invoke-virtual {v2}, Ljava/lang/String;->length()I
 
-Code:
+    move-result v4
 
-    \   backslash
-    `   backtick
-    *   asterisk
-    _   underscore
-    {}  curly braces
-    []  square brackets
-    ()  parentheses
-    #   hash mark
-    +   plus sign
-    -   minus sign (hyphen)
-    .   dot
-    !   exclamation mark
+    invoke-virtual {v3, v4}, Ljava/util/Random;->nextInt(I)I
 
-## Inline HTML
+    move-result v4
 
-For any markup that is not covered by Markdown's syntax, you simply use HTML itself. There's no need to preface it or delimit it to indicate that you're switching from Markdown to HTML; you just use the tags.
+    .line 31
+    invoke-virtual {v2, v4}, Ljava/lang/String;->charAt(I)C
 
-Code:
+    move-result v4
 
-    This is a regular paragraph.
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    <table>
-        <tr>
-            <td>Foo</td>
-        </tr>
-    </table>
+    .line 29
+    add-int/lit8 v0, v0, 0x1
 
-    This is another regular paragraph.
+    goto :goto_d
 
-Preview:
+    .line 33
+    :cond_23
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
----
+    move-result-object v0
 
-This is a regular paragraph.
+    return-object v0
+.end method
+```
 
-<table>
-    <tr>
-        <td>Foo</td>
-    </tr>
-</table>
+原方法添加调用：
+```smali
+invoke-static {}, 当前类名->randomS()Ljava/lang/String;
 
-This is another regular paragraph.
+move-result-object p1
+```
 
----
-
-Note that Markdown formatting syntax is **not processed within block-level HTML tags**.
-
-Unlike block-level HTML tags, Markdown syntax is **processed within span-level tags**.
-
-Code:
-
-    <span>**Work**</span>
-
-    <div>
-        **No Work**
-    </div>
-
-Preview:
-
----
-
-<span>**Work**</span>
-
-<div>
-  **No Work**
-</div>
-***
+## 999，学习通数据迁移
+可将原版数据迁移至修改版，避免聊天记录丢失。
+方法：
+1，原版设置选择“备份（迁移至鸿蒙）”，在Download/chaoxing下生成数据包。
+2，对修改包进行“功能”-“注入文件提供器”，安装后mt“添加本地存储”
+3，将数据包“com.chaoxing.mobile/ce/”解压至data/data
+注：新版（6.4.8）聊天记录被加密，不能恢复给旧版（6.1.5）。版本差距过大可能也无法恢复，请自行修改>=导出时学习通版本的学习通apk。
