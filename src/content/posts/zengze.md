@@ -2,9 +2,11 @@
 title: 正则表达式基础教学详解
 published: 2025-12-31
 tags: [教程]
-category: ACG
+category: 编程
 draft: false
 ---
+
+<iframe width="100%" height="468" src="//player.bilibili.com/player.html?bvid=BV1fm411C7fq&cid=1532051992&isOutside=true&autoplay=0" frameborder="0" scrolling="no" allowfullscreen></iframe>
 
 ## 一、重复匹配符：控制字符出现次数
 这类符号用于限定**单个字符/子表达式**的出现次数，是正则中最基础且常用的规则。
@@ -14,7 +16,7 @@ draft: false
 | `d?`   | 字符d出现0次或1次 | `do?g` | 匹配 `dg`（o出现0次）、`dog`（o出现1次），不匹配 `doog` |
 | `a*`   | 字符a出现0次、1次或多次 | `a*b` | 匹配 `b`（a0次）、`ab`（a1次）、`aaaab`（a4次） |
 | `a+`   | 字符a出现1次及以上（至少1次） | `a+b` | 匹配 `ab`、`aab`，不匹配 `b` |
-| `a{6}` | 字符a**恰好**出现6次 | `a{6}` | 匹配 `aaaaaa`，不匹配 `aaaaa` 或 `aaaaaaa` |
+| `a{6}` | 字符a恰好出现6次 | `a{6}` | 匹配 `aaaaaa`，不匹配 `aaaaa` 或 `aaaaaaa` |
 | `a{2,}`| 字符a出现2次及以上 | `a{2,}` | 匹配 `aa`、`aaaa`，不匹配 `a` |
 | `a{2,6}`| 字符a出现2~6次（包含2和6） | `a{2,6}` | 匹配 `aa`、`aaaaa`，不匹配 `a`、`aaaaaaa` |
 

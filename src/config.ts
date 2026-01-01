@@ -246,23 +246,16 @@ export const navBarConfig: NavBarConfig = {
 			icon: "material-symbols:link",
 			children: [
 				{
-					name: "GitHub",
-					url: "https://github.com/matsuzaka-yuki/Mizuki",
-					external: true,
-					icon: "fa6-brands:github",
-				},
-
-				{
-					name: "Bilibili",
-					url: "https://space.bilibili.com/701864046",
-					external: true,
-					icon: "fa6-brands:bilibili",
-				},
-				{
 					name: "QQ",
-					url: "https://gitee.com/matsuzakayuki/Mizuki",
+					url: "https://vip.123pan.cn/1813811951/yk6baz03t0n000d7w33hp3p3orfsqbg8DIYPDwYPDIryDGxwDqYwDY==.jpg",
 					external: true,
-					icon: "mdi:git",
+					icon: "fa6-brands:qq",
+				},
+				{
+					name: "WeChat",
+					url: "https://vip.123pan.cn/1813811951/ymjew503t0m000d7w32y3w1m2xypiw30DIYPDwYPDIryDGxwDqYwDY==.jpg",
+					external: true,
+					icon: "fa6-brands:weixin",
 				},
 			],
 		},
@@ -339,26 +332,21 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/myshow.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 	name: "✿白箬璃❀ᵒᵏᵎ",
-	bio: "来到这个世界而失去的力量，似乎已经恢复了大半。哼哼哼，定罪之时即将…啊啊，不必担心。即使到了终末之刻，我在此世降下罪罚之雷时，也不会伤及你。因为，你可是我的祝圣之人啊。",
+	bio: "我不受欢迎，怎么想都是你们的错。",
 	typewriter: {
 		enable: true, // 启用个人简介打字机效果
 		speed: 80, // 打字速度（毫秒）
 	},
 	links: [
 		{
-			name: "Bilibli",
-			icon: "fa6-brands:bilibili",
-			url: "https://space.bilibili.com/701864046",
+			name: "QQ",
+			icon: "fa6-brands:qq",
+			url: "https://vip.123pan.cn/1813811951/yk6baz03t0n000d7w33hp3p3orfsqbg8DIYPDwYPDIryDGxwDqYwDY==.jpg",
 		},
 		{
-			name: "Gitee",
-			icon: "mdi:git",
-			url: "https://gitee.com/matsuzakayuki",
-		},
-		{
-			name: "GitHub",
-			icon: "fa6-brands:github",
-			url: "https://github.com/matsuzaka-yuki",
+			name: "微信",
+			icon: "fa6-brands:weixin",
+			url: "https://vip.123pan.cn/1813811951/ymjew503t0m000d7w32y3w1m2xypiw30DIYPDwYPDIryDGxwDqYwDY==.jpg",
 		},
 	],
 };
@@ -417,8 +405,7 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "公告",
-	content:
-		"你好啊，这不是什么高深的技术论坛，只是一个爱折腾的学者，在这里碎碎念技术那些事儿～",
+	content: "你好啊，欢迎来到我的个人博客，我会在这里分享一些想法和教程",
 	closable: false, // 重要公告，不允许关闭
 	link: {
 		enable: false,

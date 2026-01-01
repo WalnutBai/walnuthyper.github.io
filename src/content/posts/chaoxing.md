@@ -1,21 +1,24 @@
 ---
-title: 学习通APK修改全教程
+title: 学习通手机端修改教程
 published: 2025-12-31
 tags: [安卓逆向, 教程]
 category: Android
 draft: false
 ---
 
-# 学习通APK修改全教程
+# 学习通手机端修改教程
 
 本教程涵盖学习通APK脱壳、功能修改、反检测、考试增强等全流程操作，适配6.x系列版本。
 
 ## 1，脱壳
-脱壳网站56.al，获得dex
+首先通过脱壳网站[56.al](https://56.al/)，获得dex
 AndroidManifest.xml：
 ```xml
 application下name：“com.secneo.apkwrapper.AW”改“com.chaoxing.mobile.AppApplication”，
-android:appComponentFactory="com.secneo.apkwrapper.AP"改为“androidx.core.app.CoreComponentFactory”并删除最后provider，添加“android:debuggable="true"”后面调试用。
+
+android:appComponentFactory="com.secneo.apkwrapper.AP"改为“androidx.core.app.CoreComponentFactory”并删除最后provider，
+
+添加“android:debuggable="true"”后面调试用。//可选
 ```
 原dex有库需导入，classes重命名+1塞回包。（否则云盘闪退）
 删除特征文件：
