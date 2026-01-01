@@ -24,8 +24,8 @@ const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UT
 export const siteConfig: SiteConfig = {
 	title: "✿白箬璃❀ᵒᵏᵎ的个人博客",
 	subtitle: "琉璃亭",
-	siteURL: "https://mizuki.mysqil.com/", // 请替换为你的站点URL，以斜杠结尾
-	siteStartDate: "2025-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
+	siteURL: "https://walnuthyper.pages.dev/", // 请替换为你的站点URL，以斜杠结尾
+	siteStartDate: "2026-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
 
 	timeZone: SITE_TIMEZONE,
 
@@ -118,7 +118,7 @@ export const siteConfig: SiteConfig = {
 		carousel: {
 			enable: true, // 为 true 时：为多张图片启用轮播。为 false 时：从数组中随机显示一张图片
 
-			interval: 1.5, // 轮播间隔时间（秒）
+			interval: 10.0, // 轮播间隔时间（秒）
 		},
 
 		waves: {
@@ -228,7 +228,7 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	position: "center", // 壁纸位置，等同于 object-position
 	carousel: {
 		enable: true, // 启用轮播
-		interval: 5, // 轮播间隔时间（秒）
+		interval: 10.0, // 轮播间隔时间（秒）
 	},
 	zIndex: -1, // 层级，确保壁纸在背景层
 	opacity: 0.8, // 壁纸透明度
@@ -259,7 +259,7 @@ export const navBarConfig: NavBarConfig = {
 					icon: "fa6-brands:bilibili",
 				},
 				{
-					name: "Gitee",
+					name: "QQ",
 					url: "https://gitee.com/matsuzakayuki/Mizuki",
 					external: true,
 					icon: "mdi:git",
