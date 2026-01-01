@@ -416,13 +416,14 @@ export const shareConfig: ShareConfig = {
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "限时活动",
-	content: "本站正在进行技术分享活动，欢迎投稿参与！",
+	title: "公告",
+	content:
+		"你好啊，这不是什么高深的技术论坛，只是一个爱折腾的学者，在这里碎碎念技术那些事儿～",
 	closable: false, // 重要公告，不允许关闭
 	link: {
-		enable: true,
-		text: "参与活动",
-		url: "https://example.com/activity",
+		enable: false,
+		text: "嘻嘻嘻",
+		url: "https://1813811951.v.123pan.cn/1813811951/20905926",
 		external: true, // 外部链接，在新标签页打开
 	},
 };
@@ -599,12 +600,12 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 
 export const sakuraConfig: SakuraConfig = {
-	enable: false, // 默认关闭樱花特效
+	enable: true, // 默认关闭樱花特效
 	sakuraNum: 21, // 樱花数量
 	limitTimes: -1, // 樱花越界限制次数，-1为无限循环
 	size: {
-		min: 0.5, // 樱花最小尺寸倍数
-		max: 1.1, // 樱花最大尺寸倍数
+		min: 0.3, // 樱花最小尺寸倍数
+		max: 0.8, // 樱花最大尺寸倍数
 	},
 	opacity: {
 		min: 0.3, // 樱花最小不透明度
@@ -616,8 +617,8 @@ export const sakuraConfig: SakuraConfig = {
 			max: -1.2, // 水平移动速度最大值
 		},
 		vertical: {
-			min: 1.5, // 垂直移动速度最小值
-			max: 2.2, // 垂直移动速度最大值
+			min: 1.0, // 垂直移动速度最小值
+			max: 1.0, // 垂直移动速度最大值
 		},
 		rotation: 0.03, // 旋转速度
 		fadeSpeed: 0.03, // 消失速度，不应大于最小不透明度
@@ -625,6 +626,7 @@ export const sakuraConfig: SakuraConfig = {
 	zIndex: 100, // 层级，确保樱花在合适的层级显示
 };
 
+// Pio 看板娘配置
 // Pio 看板娘配置
 export const pioConfig: import("./types/config").PioConfig = {
 	enable: true, // 启用看板娘
@@ -635,17 +637,23 @@ export const pioConfig: import("./types/config").PioConfig = {
 	mode: "draggable", // 默认为可拖拽模式
 	hiddenOnMobile: true, // 默认在移动设备上隐藏
 	dialog: {
-		welcome: "Welcome to Mizuki Website!", // 欢迎词
+		welcome: "欢迎来到 ✿白箬璃❀ᵒᵏᵎ的个人博客！", // 欢迎词
 		touch: [
-			"What are you doing?",
-			"Stop touching me!",
+			"你在干什么？",
+			"再摸我就报警了！",
 			"HENTAI!",
-			"Don't bully me like that!",
+			"不可以这样欺负我啦！",
+			"哎呀，别碰那里~",
+			"非礼啊！",
+			"讨厌~",
+			"你好过分哦！",
+			"住手！",
+			"我要生气了！",
 		], // 触摸提示
-		home: "Click here to go back to homepage!", // 首页提示
-		skin: ["Want to see my new outfit?", "The new outfit looks great~"], // 换装提示
-		close: "QWQ See you next time~", // 关闭提示
-		link: "https://github.com/matsuzaka-yuki/Mizuki", // 关于链接
+		home: "点击这里回到首页！", // 首页提示
+		skin: ["想看看我的新衣服吗？", "新衣服真漂亮~"], // 换装提示
+		close: "QWQ 下次再见吧~", // 关闭提示
+		link: "https://walnuthyper.pages.dev/", // 关于链接
 	},
 };
 

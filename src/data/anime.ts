@@ -34,6 +34,22 @@ const localAnimeList: AnimeItem[] = [
 		endDate: "2022-09",
 	},
 	{
+		title: "轻音少女", // 标题
+		status: "planned", // 状态
+		rating: 9.5, // 评分
+		cover: "/assets/anime/qingyin.jpg", // 封面
+		description: "女孩子们的日常，甜美治愈", // 描述
+		episodes: "12 episodes", // 集数
+		year: "2015", // 年份
+		genre: ["日常", "治愈"], // 类型
+		studio: "京都动画", // 制作公司
+		link: "https://www.bilibili.com/bangumi/play/ss1173?spm_id_from=333.337.0.0", // 链接
+		progress: 12, // 观看进度
+		totalEpisodes: 12, // 总集数
+		startDate: "2015-07", // 开始观看
+		endDate: "2015-09", // 完成观看
+	},
+	{
 		title: "Yowamushi Pedal",
 		status: "watching",
 		rating: 9.5,

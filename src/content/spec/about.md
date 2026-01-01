@@ -1,49 +1,26 @@
-
-This website is built with the **Astro** framework using the [Mizuki](https://github.com/matsuzaka-yuki/mizuki) theme.
-
-::github{repo="matsuzaka-yuki/Mizuki"}
-
-## 🌟 Theme Features
-
-### 🎨 Design & User Experience
-- **Modern & Elegant Design** - Clean, minimalist interface with beautiful typography
-- **Fully Responsive** - Optimized for all devices from mobile to desktop
-- **Dark/Light Mode** - Automatic theme switching with smooth transitions
-- **Beautiful Typography** - Enhanced readability with JetBrains Mono font
-- **Smooth Animations** - Fluid page transitions and interactive elements
-
-### 🔍 Content & Search
-- **Advanced Search** - Powered by [Pagefind](https://pagefind.app/) for fast, accurate results
-- **Enhanced Markdown** - Extended syntax with code highlighting and math support
-- **Interactive Table of Contents** - Auto-scroll navigation for long articles
-- **RSS Feed Generation** - Stay updated with automatic feed generation
-- **Reading Time Estimation** - Know how long articles take to read
-- **Post Categorization** - Organize content with tags and categories
-
-
-
-### 📱 Special Pages
-- **Anime Tracking Page** - Track your anime watching progress with ratings
-- **Friends Links Page** - Showcase friend websites with beautiful cards
-- **Diary/Moments Page** - Share life moments like social media posts
-- **Archive Page** - Organized timeline view of all posts
-- **About Page** - Customizable personal introduction (this page!)
-
-### 🛠 Technical Features
-- **Enhanced Code Blocks** - Powered by [Expressive Code](https://expressive-code.com/)
-- **Math Support** - LaTeX rendering with KaTeX for mathematical expressions
-- **Image Optimization** - PhotoSwipe gallery with lazy loading
-- **SEO Optimized** - Built-in sitemap and meta tags for better search visibility
-- **Performance Optimized** - Fast loading with caching and optimization
-- **Comment System Ready** - Integration support for Twikoo comments
-
-### 🎯 Advanced Markdown Features
-- **Callouts & Admonitions** - Beautiful info boxes with `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`
-- **Mathematical Equations** - Write LaTeX math with `$inline$` and `$$block$$` syntax
-- **GitHub Cards** - Embed repository cards with `::github{repo="user/repo"}`
-- **Syntax Highlighting** - Advanced code highlighting with line numbers
-- **Copy Code Buttons** - Easy code copying functionality
+✨ **一枚爱折腾的技术控 + 二次元发烧友** ✨
 
 ---
 
-*Built with ❤️ using Astro and inspired by modern web design principles.*
+### 💻 技术日常
+日常游走于 **C++/Java/Python** 的代码战场，
+同时在前端领域摸爬滚打，积累实战经验。
+
+白天和**软件开发、软件测试**死磕需求与 Bug，
+晚上化身**安卓逆向爱好者**，专挑各类 APP 琢磨底层逻辑，
+主打一个「踩坑无数，乐此不疲」。
+
+对技术前沿的新鲜玩意儿毫无抵抗力，
+只要是没试过的工具、没玩过的框架，
+都想薅过来捣鼓一番！
+
+### 🎮 兴趣充电站
+- **动漫重度依赖患者**：追番是续命良药，本命番可反复刷N遍
+- **音乐续命党**：耳机永不离身，写代码的最佳 BGM 提供者
+- **矛盾星人**：疯狂想认识技术同好，聊代码聊动漫聊到天昏地暗；但现实社恐属性拉满，线上侃侃而谈，线下秒变安静选手
+
+---
+
+如果你也爱捣鼓技术、追番听歌，
+或者想吐槽踩过的代码坑，**欢迎与我联系**！
+咱们线上畅聊，一起进步～
