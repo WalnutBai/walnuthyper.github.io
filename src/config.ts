@@ -405,7 +405,8 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "公告",
-	content: "你好啊，欢迎来到我的个人博客，我会在这里分享一些想法和教程",
+	content:
+		"你好啊，欢迎来到我的个人博客，我会在这里分享一些我的日常、想法、和教程。",
 	closable: false, // 重要公告，不允许关闭
 	link: {
 		enable: false,
