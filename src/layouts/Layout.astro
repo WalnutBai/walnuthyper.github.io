@@ -229,7 +229,7 @@ if (siteConfig.font) {
 		}
 		<meta name="author" content={profileConfig.name} />
 		<meta property="og:site_name" content={siteConfig.title} />
-		<meta property="og:url" content={Astro.url} />
+		<meta property="og:url" content={Astro.url} id="og-url" />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description || pageTitle} />
 		{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
@@ -241,7 +241,7 @@ if (siteConfig.font) {
 			)
 		}
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:url" content={Astro.url} id="twitter-url" />
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={description || pageTitle} />
 		<meta name="viewport" content="width=device-width" />
@@ -264,6 +264,23 @@ if (siteConfig.font) {
 			))
 		}
 
+		<!-- 动态更新分享相关的元标签 -->
+		<script is:inline>
+			// 在客户端动态更新og:url和twitter:url元标签
+			document.addEventListener('DOMContentLoaded', () => {
+				const currentUrl = window.location.href;
+				const ogUrlMeta = document.getElementById('og-url');
+				const twitterUrlMeta = document.getElementById('twitter-url');
+				
+				if (ogUrlMeta) {
+					ogUrlMeta.setAttribute('content', currentUrl);
+				}
+				if (twitterUrlMeta) {
+					twitterUrlMeta.setAttribute('content', currentUrl);
+				}
+			});
+		</script>
+		
 		<!-- Set the theme before the page is rendered to avoid a flash -->
 		<script
 			is:inline
