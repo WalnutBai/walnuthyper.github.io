@@ -15,13 +15,10 @@ export interface DiaryItem {
 const diaryData: DiaryItem[] = [
 	{
 		id: 1,
-		content:
-			"The falling speed of cherry blossoms is five centimeters per second!",
-		date: "2025-01-15T10:30:00Z",
-		images: [
-			"/images/diary/sakura.jpg",
-			"https://vip.123pan.cn/1813811951/ymjew503t0n000d7w32yis2xo2chgf45DIYPDwYPDIryDGxwDqYwDY==.jpg",
-		],
+		content: `　　傻逼腾讯审核机制，搭建个人博客QQ 微信全拦截，朋友圈都不让发。   
+		但能被QQ 微信拦住的更是神人，嘻嘻。`,
+		date: "2026-01-02T10:30:00Z",
+		images: ["/images/diary/weixinqq.png", "/images/diary/weixinqq.png"],
 	},
 ];
 

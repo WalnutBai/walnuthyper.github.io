@@ -1,5 +1,5 @@
 ---
-title: MT管理器Termux终端拓展包
+title: MT终端拓展包 Termux版
 published: 2026-01-01
 tags: [Shell]
 category: Android
@@ -7,9 +7,9 @@ draft: false
 ---
 
 ### 🌟 软件简介
-最近在研究MT管理器的终端功能与Linux操作的乐趣，但原生拓展库功能贫瘠，可玩性大打折扣。
+最近在研究MT管理器的终端功能，但原生拓展库功能贫瘠，可玩性大打折扣。
 
-为此，参考开源项目MTermEx重新打包并开放分享APK
+为此，参考开源项目MTermEx打包修改并开放分享APK
 
 核心是让MT管理器直接适配Termux终端环境，支持执行「数据目录1」内的各类常用命令，轻松解锁更多终端拓展玩法！
 
@@ -27,9 +27,11 @@ draft: false
 
 ---
 
+### 📥 下载链接
+[MT终端扩展包_v3.8(Termux环境).apk](https://www.123684.com/s/XINlVv-UwJVh)
+
 ### 🛠️ 项目开源地址
 ::github{repo="ZeroAicy/MTermEx"}
----
 
 ### ⚠️ 重要注意事项
 1. **适配环境**：必须搭配MT管理器使用，功能依赖Termux终端环境运行，需提前配置基础环境；
@@ -37,8 +39,3 @@ draft: false
 3. **命令范围**：仅支持执行「数据目录1(/storage/emulated/0/)」路径下的终端命令，超出路径的命令无法响应；
 4. **自定义扩展**：如需替换 `lib` 文件夹进行功能定制，建议先备份原始文件，避免因文件不兼容导致软件异常。
 
----
-### 📥 下载链接
-[MT终端扩展包_v3.8(Termux环境).apk  ](https://www.123684.com/s/XINlVv-UwJVh)  
-
----
