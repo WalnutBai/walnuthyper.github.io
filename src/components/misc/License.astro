@@ -31,14 +31,17 @@ const postUrl = sourceLink || decodeURIComponent(Astro.url.toString());
         {postUrl}
     </a>
     <script is:inline>
-        // 在客户端动态更新URL
-        document.addEventListener('DOMContentLoaded', () => {
+        // 立即更新URL，不等待DOMContentLoaded
+        (function() {
             const linkElement = document.getElementById('license-post-url');
             if (linkElement) {
-                linkElement.href = window.location.href;
-                linkElement.textContent = window.location.href;
+                // 使用requestAnimationFrame确保DOM已准备就绪
+                requestAnimationFrame(() => {
+                    linkElement.href = window.location.href;
+                    linkElement.textContent = window.location.href;
+                });
             }
-        });
+        })();
     </script>
     <div class="flex gap-6 mt-2">
         <div>

@@ -266,19 +266,22 @@ if (siteConfig.font) {
 
 		<!-- 动态更新分享相关的元标签 -->
 		<script is:inline>
-			// 在客户端动态更新og:url和twitter:url元标签
-			document.addEventListener('DOMContentLoaded', () => {
+			// 立即更新元标签，不等待DOMContentLoaded
+			(function() {
 				const currentUrl = window.location.href;
-				const ogUrlMeta = document.getElementById('og-url');
-				const twitterUrlMeta = document.getElementById('twitter-url');
-				
-				if (ogUrlMeta) {
-					ogUrlMeta.setAttribute('content', currentUrl);
-				}
-				if (twitterUrlMeta) {
-					twitterUrlMeta.setAttribute('content', currentUrl);
-				}
-			});
+				// 使用requestAnimationFrame确保DOM已准备就绪
+				requestAnimationFrame(() => {
+					const ogUrlMeta = document.getElementById('og-url');
+					const twitterUrlMeta = document.getElementById('twitter-url');
+					
+					if (ogUrlMeta) {
+						ogUrlMeta.setAttribute('content', currentUrl);
+					}
+					if (twitterUrlMeta) {
+						twitterUrlMeta.setAttribute('content', currentUrl);
+					}
+				});
+			})();
 		</script>
 		
 		<!-- Set the theme before the page is rendered to avoid a flash -->
