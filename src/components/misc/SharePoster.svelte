@@ -10,14 +10,15 @@ export let author: string;
 export let description = "";
 export let pubDate: string;
 export let coverImage: string | null = null;
-export let url: string;
 export let siteTitle: string;
 export let avatar: string | null = null;
 
 let showModal = false;
 let posterImage: string | null = null;
 let generating = false;
-let themeColor = "#558e88"; 
+let themeColor = "#558e88";
+// 在客户端动态获取当前URL，而不是依赖静态传入的参数
+let url = "";
 
 onMount(() => {
 	const temp = document.createElement("div");
@@ -30,6 +31,9 @@ onMount(() => {
 	if (computedColor) {
 		themeColor = computedColor;
 	}
+	
+	// 动态获取当前页面的URL
+	url = window.location.href;
 });
 
 function loadImage(src: string): Promise<HTMLImageElement | null> {
