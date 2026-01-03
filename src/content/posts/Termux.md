@@ -1,7 +1,7 @@
 ---
 title: MT终端拓展包 Termux版
 published: 2026-01-01
-tags: [Shell]
+tags: [Shell, 终端]
 category: Android
 draft: false
 ---

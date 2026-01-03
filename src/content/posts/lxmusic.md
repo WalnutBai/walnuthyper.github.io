@@ -32,10 +32,6 @@ https://ghproxy.net/raw.githubusercontent.com/pdone/lx-music-source/main/flower/
 ```
 https://ghproxy.net/raw.githubusercontent.com/pdone/lx-music-source/main/grass/latest.js
 ```
-
-
-
-
 ### 项目开源地址
 ::github{repo="Huibq/keep-alive"}
 

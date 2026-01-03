@@ -2,7 +2,7 @@
 title: 学习通手机端修改教程
 published: 2025-12-31
 tags: [安卓逆向, 教程]
-category: Android
+category: 逆向工程
 draft: false
 ---
 
