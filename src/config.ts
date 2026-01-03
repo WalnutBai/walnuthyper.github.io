@@ -22,8 +22,8 @@ import { LinkPreset } from "./types/config";
 const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UTC+8
 export const siteConfig: SiteConfig = {
-	title: "✿白箬璃❀ᵒᵏᵎ的个人博客",
-	subtitle: "琉璃亭",
+	title: "琉璃亭",
+	subtitle: "✿白箬璃❀ᵒᵏᵎ的个人博客",
 	siteURL: "https://walnuthyper.pages.dev/", // 请替换为你的站点URL，以斜杠结尾
 	siteStartDate: "2026-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
 
