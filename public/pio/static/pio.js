@@ -36,10 +36,7 @@ var Paul_Pio = function (prop) {
 		// 是否为移动设备
 		isMobile: () => {
 			let ua = window.navigator.userAgent.toLowerCase();
-			ua =
-				ua.indexOf("mobile") ||
-				ua.indexOf("android") ||
-				ua.indexOf("ios");
+			ua = ua.indexOf("mobile") || ua.indexOf("android") || ua.indexOf("ios");
 
 			return window.innerWidth < 500 || ua !== -1;
 		},
@@ -108,13 +105,10 @@ var Paul_Pio = function (prop) {
 
 				if (prop.content.referer) {
 					modules.message(
-						prop.content.referer.replace(
-							/%t/,
-							`“${referrer.hostname}”`,
-						),
+						prop.content.referer.replace(/%t/, `“${referrer.hostname}”`),
 					);
 				} else {
-					modules.message(`欢迎来到 ✿白箬璃❀ᵒᵏᵎ的个人博客！`);
+					modules.message(`欢迎来自 “${referrer.hostname}” 的朋友！`);
 				}
 			} else if (prop.tips) {
 				let text,
@@ -188,15 +182,11 @@ var Paul_Pio = function (prop) {
 					loadlive2d("pio", prop.model[modules.idol()]);
 
 					prop.content.skin &&
-						modules.message(
-							prop.content.skin[1] || "新衣服真漂亮~",
-						);
+						modules.message(prop.content.skin[1] || "新衣服真漂亮~");
 				};
 				elements.skin.onmouseover = () => {
 					prop.content.skin &&
-						modules.message(
-							prop.content.skin[0] || "想看看我的新衣服吗？",
-						);
+						modules.message(prop.content.skin[0] || "想看看我的新衣服吗？");
 				};
 				current.menu.appendChild(elements.skin);
 			}
@@ -216,9 +206,7 @@ var Paul_Pio = function (prop) {
 			// 夜间模式
 			if (prop.night) {
 				elements.night.onclick = () => {
-					typeof prop.night === "function"
-						? prop.night()
-						: eval(prop.night);
+					typeof prop.night === "function" ? prop.night() : eval(prop.night);
 				};
 				elements.night.onmouseover = () => {
 					modules.message("夜间点击这里可以保护眼睛呢");
@@ -245,26 +233,14 @@ var Paul_Pio = function (prop) {
 				for (let i = 0; i < el.length; i++) {
 					if (item.type === "read") {
 						el[i].onmouseover = (ev) => {
-							const text =
-								ev.currentTarget.title ||
-								ev.currentTarget.innerText;
-							modules.message(
-								"想阅读 %t 吗？".replace(
-									/%t/,
-									"“" + text + "”",
-								),
-							);
+							const text = ev.currentTarget.title || ev.currentTarget.innerText;
+							modules.message("想阅读 %t 吗？".replace(/%t/, "“" + text + "”"));
 						};
 					} else if (item.type === "link") {
 						el[i].onmouseover = (ev) => {
-							const text =
-								ev.currentTarget.title ||
-								ev.currentTarget.innerText;
+							const text = ev.currentTarget.title || ev.currentTarget.innerText;
 							modules.message(
-								"想了解一下 %t 吗？".replace(
-									/%t/,
-									"“" + text + "”",
-								),
+								"想了解一下 %t 吗？".replace(/%t/, "“" + text + "”"),
 							);
 						};
 					} else if (item.text) {
@@ -370,9 +346,7 @@ var Paul_Pio = function (prop) {
 		};
 	};
 
-	localStorage.getItem("posterGirl") === "0"
-		? this.initHidden()
-		: this.init();
+	localStorage.getItem("posterGirl") === "0" ? this.initHidden() : this.init();
 };
 
 // 请保留版权说明

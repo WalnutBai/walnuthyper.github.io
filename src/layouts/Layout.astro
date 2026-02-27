@@ -8,7 +8,6 @@ import {
 	profileConfig,
 	siteConfig,
 } from "@/config";
-import { umamiConfig } from "../config";
 
 const BANNER_HEIGHT = 35;
 const BANNER_HEIGHT_EXTEND = 30;
@@ -127,9 +126,6 @@ const bannerOffsetByPosition = {
 const bannerOffset =
 	bannerOffsetByPosition[siteConfig.banner.position || "center"];
 
-const umamiEnabled = umamiConfig.enabled || false;
-const umamiScripts = umamiConfig.scripts || ""; // 获取Umami scripts配置
-
 // 构建字体配置的 CSS 变量
 // ASCII 字体优先级最高（用于英文、数字等），CJK 字体作为回退
 let bodyFontFamily = "";
@@ -169,7 +165,7 @@ if (siteConfig.font) {
 <!doctype html>
 <html
 	lang={siteLang}
-	class="bg-[var(--page-bg)] text-[14px] md:text-[16px]"
+	class="bg-(--page-bg) text-[14px] md:text-[16px]"
 	data-overlayscrollbars-initialize
 >
 	<head>
@@ -229,7 +225,7 @@ if (siteConfig.font) {
 		}
 		<meta name="author" content={profileConfig.name} />
 		<meta property="og:site_name" content={siteConfig.title} />
-		<meta property="og:url" content={Astro.url} id="og-url" />
+		<meta property="og:url" content={Astro.url} />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description || pageTitle} />
 		{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
@@ -241,7 +237,7 @@ if (siteConfig.font) {
 			)
 		}
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={Astro.url} id="twitter-url" />
+		<meta property="twitter:url" content={Astro.url} />
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={description || pageTitle} />
 		<meta name="viewport" content="width=device-width" />
@@ -264,26 +260,6 @@ if (siteConfig.font) {
 			))
 		}
 
-		<!-- 动态更新分享相关的元标签 -->
-		<script is:inline>
-			// 立即更新元标签，不等待DOMContentLoaded
-			(function() {
-				const currentUrl = window.location.href;
-				// 使用requestAnimationFrame确保DOM已准备就绪
-				requestAnimationFrame(() => {
-					const ogUrlMeta = document.getElementById('og-url');
-					const twitterUrlMeta = document.getElementById('twitter-url');
-					
-					if (ogUrlMeta) {
-						ogUrlMeta.setAttribute('content', currentUrl);
-					}
-					if (twitterUrlMeta) {
-						twitterUrlMeta.setAttribute('content', currentUrl);
-					}
-				});
-			})();
-		</script>
-		
 		<!-- Set the theme before the page is rendered to avoid a flash -->
 		<script
 			is:inline
@@ -294,6 +270,7 @@ if (siteConfig.font) {
 				BANNER_HEIGHT_EXTEND,
 				PAGE_WIDTH,
 				configHue,
+				pageScaling: siteConfig.pageScaling,
 			}}
 		>
 			// Load the theme from local storage
@@ -335,6 +312,43 @@ if (siteConfig.font) {
 				"--banner-height-extend",
 				`${offset}px`,
 			);
+
+			// 自动缩放逻辑 (Moved from MainGridLayout to here for earlier execution)
+			(function() {
+				if (pageScaling && pageScaling.enable) {
+					function adjustPageScale() {
+						const isTouch =
+							(window.matchMedia &&
+								(window.matchMedia("(pointer:coarse)").matches ||
+									window.matchMedia("(hover: none)").matches)) ||
+							("ontouchstart" in window);
+						const isPortrait =
+							window.matchMedia &&
+							window.matchMedia("(orientation: portrait)").matches;
+						const isTabletLike = isTouch || window.innerWidth <= 1280;
+						if (isTabletLike || isPortrait) {
+							document.documentElement.style.fontSize = "";
+							return;
+						}
+						const targetWidth = pageScaling.targetWidth || 2000;
+						const currentWidth = document.documentElement.clientWidth;
+						let scale = currentWidth / targetWidth;
+						if (scale > 1) scale = 1;
+						if (scale < 0.85) scale = 0.85;
+						document.documentElement.style.fontSize = `${scale * 100}%`;
+					}
+
+					// 立即执行一次
+					adjustPageScale();
+					
+					// 监听窗口大小变化
+					window.addEventListener('resize', adjustPageScale);
+					
+					// Swup 页面切换后也需要检查
+					document.addEventListener('swup:page:view', adjustPageScale);
+					window.addEventListener('orientationchange', adjustPageScale);
+				}
+			})();
 		</script>
 		<style
 			define:vars={{
@@ -359,14 +373,12 @@ if (siteConfig.font) {
 			title={profileConfig.name}
 			href={`${Astro.site}rss.xml`}
 		/>
-
-		<!-- Umami Analytics -->
-		{umamiEnabled && umamiScripts && <Fragment set:html={umamiScripts} />}
+		
 	</head>
 	<body
 		class="min-h-screen"
 		class:list={[
-			{ "lg:is-home": isHomePage, "enable-banner": enableBanner },
+			{ "is-home": isHomePage, "enable-banner": enableBanner },
 		]}
 		style={bodyFontFamily ? `font-family: ${bodyFontFamily};` : ""}
 		data-overlayscrollbars-initialize
@@ -403,28 +415,29 @@ if (siteConfig.font) {
 		"banner-height": `${BANNER_HEIGHT}vh`,
 	}}
 >
-	@tailwind components;
+	@reference "../styles/main.css";
+
 	@layer components {
 		.enable-banner.is-home #banner-wrapper {
-			@apply h-[var(--banner-height-home)] translate-y-[var(--banner-height-extend)];
+			@apply lg:h-(--banner-height-home) lg:translate-y-[var(--banner-height-extend)];
 		}
 		.enable-banner #banner-wrapper {
-			@apply h-[var(--banner-height-home)];
+			@apply lg:h-[var(--banner-height-home)];
 		}
 		.enable-banner.is-home #banner {
-			@apply h-[var(--banner-height-home)] translate-y-0;
+			@apply lg:h-(--banner-height-home) lg:translate-y-0;
 		}
 		.enable-banner #banner {
-			@apply h-[var(--banner-height-home)] translate-y-[var(--bannerOffset)];
+			@apply lg:h-(--banner-height-home) lg:translate-y-[var(--bannerOffset)];
 		}
 		.enable-banner.is-home #main-grid {
-			@apply translate-y-[var(--banner-height-extend)];
+			@apply lg:translate-y-[var(--banner-height-extend)];
 		}
 		.enable-banner #top-row {
-			@apply h-[calc(var(--banner-height-home)_-_4.5rem)] transition-all duration-300;
+			@apply lg:h-[calc(var(--banner-height-home)-4.5rem)] transition-all duration-300;
 		}
 		.enable-banner.is-home #sidebar-sticky {
-			@apply top-[calc(1rem_-_var(--banner-height-extend))];
+			@apply lg:top-[calc(1rem_-_var(--banner-height-extend))];
 		}
 		.navbar-hidden {
 			@apply opacity-0 -translate-y-16;
@@ -443,7 +456,7 @@ if (siteConfig.font) {
 			}
 		}
 	}
-</style>
+ </style>
 
 <script>
 	// import { animationManager } from '../utils/animation-utils';
@@ -646,7 +659,7 @@ function disableAnimation() {
 
 			// Handle mobile single image banner - 使用与电脑端相同的逻辑
 			const mobileBanner = document.querySelector(
-				'.block.lg\\:hidden[alt="Mobile banner image of the blog"]',
+				'.block.md\\:hidden[alt="Mobile banner image of the blog"]',
 			);
 			if (mobileBanner && !document.getElementById("banner-carousel")) {
 				// 移动端使用与电脑端相同的初始化逻辑
@@ -666,32 +679,16 @@ function disableAnimation() {
 	function initCarousel() {
 		const carouselItems = document.querySelectorAll(".carousel-item");
 		// 根据屏幕尺寸过滤有效的轮播项
-		const isMobile = window.innerWidth < 1024; // lg breakpoint
+		const isMobile = window.innerWidth < 768; // md breakpoint
 		const validItems = Array.from(carouselItems).filter((item) => {
 			if (isMobile) {
 				// 移动端：只显示有mobile图片的项目
-				return item.querySelector(".block.lg\\:hidden");
+				return item.querySelector(".block.md\\:hidden");
 			} else {
-				// 桌面端：只显示有desktop图片的项目
-				return item.querySelector(".hidden.lg\\:block");
+				// 桌面端/平板端：只显示有desktop图片的项目
+				return item.querySelector(".hidden.md\\:block");
 			}
 		});
-
-		// Check if carousel is disabled but we have multiple images - show random image
-		if (validItems.length > 1 && !siteConfig.banner.carousel?.enable) {
-			// Hide all images first
-			carouselItems.forEach((item, _index) => {
-				item.classList.add("opacity-0", "scale-110");
-				item.classList.remove("opacity-100", "scale-100");
-			});
-
-			// Show random valid image
-			const randomIndex = Math.floor(Math.random() * validItems.length);
-			const randomItem = validItems[randomIndex];
-			randomItem.classList.add("opacity-100", "scale-100");
-			randomItem.classList.remove("opacity-0", "scale-110");
-			return;
-		}
 
 		if (validItems.length > 1 && siteConfig.banner.carousel?.enable) {
 			let currentIndex = 0;
@@ -974,7 +971,7 @@ function disableAnimation() {
 			// 简化navbar处理逻辑
 			if (bannerEnabled) {
 				const navbar = document.getElementById("navbar-wrapper");
-				if (navbar && document.body.classList.contains("lg:is-home")) {
+				if (navbar && document.body.classList.contains("is-home")) {
 					const threshold =
 						window.innerHeight * (BANNER_HEIGHT / 100) - 88;
 					if (document.documentElement.scrollTop >= threshold) {
@@ -1043,9 +1040,9 @@ function disableAnimation() {
 				const isHomePage = pathsEqual(visit.to.url, url("/"));
 				if (bodyElement) {
 					if (isHomePage) {
-						bodyElement.classList.add("lg:is-home");
+						bodyElement.classList.add("is-home");
 					} else {
-						bodyElement.classList.remove("lg:is-home");
+						bodyElement.classList.remove("is-home");
 					}
 				}
 
@@ -1249,11 +1246,28 @@ function disableAnimation() {
 	function scrollFunction() {
 		const scrollTop = document.documentElement.scrollTop;
 		const bannerHeight = window.innerHeight * (BANNER_HEIGHT / 100);
+		
+		// 尝试获取内容区域的起始位置
+		const contentWrapper = document.getElementById('content-wrapper');
+		let showBackToTopThreshold = bannerHeight + 100; // 默认回退值
+
+		if (contentWrapper) {
+			const rect = contentWrapper.getBoundingClientRect();
+			// 当 content-wrapper 的顶部接近视口顶部时显示
+			// rect.top 是相对于视口的，当它小于视口高度的一半时，说明已经滚动到了内容区
+			// 或者更简单：scrollTop > contentWrapper.offsetTop
+			// 由于 offsetTop 是相对于 offsetParent 的，可能需要累加
+			// 这里我们使用 getBoundingClientRect + scrollTop 来获取绝对位置
+			const absoluteTop = rect.top + scrollTop;
+			// 只有当滚动超过内容区域起始位置一定距离后才显示
+			showBackToTopThreshold = absoluteTop + window.innerHeight / 4;
+		}
 
 		// 批量处理DOM操作
 		requestAnimationFrame(() => {
 			if (backToTopBtn) {
-				if (scrollTop > bannerHeight) {
+				// 使用动态计算的阈值
+				if (scrollTop > showBackToTopThreshold) {
 					backToTopBtn.classList.remove("hide");
 				} else {
 					backToTopBtn.classList.add("hide");
@@ -1261,17 +1275,23 @@ function disableAnimation() {
 			}
 
 			if (bannerEnabled && toc) {
-				if (scrollTop > bannerHeight) {
-					toc.classList.remove("toc-hide");
+				const isBannerMode = document.body.classList.contains("enable-banner");
+				if (isBannerMode) {
+					if (scrollTop > bannerHeight) {
+						toc.classList.remove("toc-hide");
+					} else {
+						toc.classList.add("toc-hide");
+					}
 				} else {
-					toc.classList.add("toc-hide");
+					// In Fullscreen or None mode, always show TOC
+					toc.classList.remove("toc-hide");
 				}
 			}
 
 			if (bannerEnabled && navbar) {
 				const isHome =
-					document.body.classList.contains("lg:is-home") &&
-					window.innerWidth >= 1024;
+					document.body.classList.contains("is-home") &&
+					window.innerWidth >= 1280;
 				const currentBannerHeight = isHome
 					? BANNER_HEIGHT_HOME
 					: BANNER_HEIGHT;

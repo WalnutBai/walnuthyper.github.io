@@ -1,10 +1,10 @@
 {
-	"title": "几张可爱的照片",
+	"title": "Some lovely pictures",
 	"hidden": false,
-	"description": "天地广阔，你当奔赴山海。",
-	"date": "2026-01-01",
+	"description": "The world is vast, and you have to go explore it.",
+	"date": "2025-08-01",
 	"location": "Bilibili",
-	"tags": ["ACG"],
+	"tags": ["Kawai", "Cute", "Moe"],
 	"layout": "masonry",
 	"columns": 3
 }
